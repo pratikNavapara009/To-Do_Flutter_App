@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/helpers/theme_helphers.dart';
+import 'package:provider/provider.dart';
 import '../globals/globals.dart';
 import '../models/todo_model.dart';
 import '../widgets/todo.dart';
@@ -199,14 +201,34 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: tdBGColor,
       elevation: 30,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Icon(
             Icons.menu,
             color: tdBlack,
             size: 30,
           ),
-          Text("To-Do App",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+          SizedBox(
+            width: 10,
+          ),
+          IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).changeTheme();
+            },
+            icon: Icon(
+              Icons.light,
+              size: 30,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 56,
+          ),
+          Text(
+            "To-Do App",
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          Spacer(),
           CircleAvatar(
             backgroundColor: Colors.white,
             radius: 20,
